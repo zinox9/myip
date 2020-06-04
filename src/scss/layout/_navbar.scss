@@ -1,0 +1,29 @@
+.navbar {
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 10;
+   clip-path: polygon(0 0, 100% 0, 85% 72%, 0 100%);
+   background-color: $color-primary;
+   padding: 0.8rem 1.3rem;
+   border-right: 1px solid $color-primary-dark;
+   border-bottom: 1px solid $color-primary-dark;
+
+   &__container {
+      filter: drop-shadow(-3px -3px 15px rgba($color-primary-dark, 0.8));
+   }
+
+   &__text {
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+      font-family: $font-text;
+      font-weight: 800;
+      font-size: 2.6rem;
+      background: -webkit-linear-gradient(
+         $color-background-light,
+         $color-background-dark
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+   }
+}

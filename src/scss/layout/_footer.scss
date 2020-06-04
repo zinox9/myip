@@ -1,0 +1,16 @@
+.footer {
+   background-color: $color-black;
+   min-height: 3vh;
+   font-family: $font-details;
+   font-size: 100;
+   // padding: 1rem;
+
+   &__text {
+      text-align: center;
+      font-size: 2rem;
+      line-height: 2.5;
+      i {
+         color: $color-secondary;
+      }
+   }
+}

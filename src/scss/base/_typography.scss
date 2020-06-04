@@ -1,0 +1,28 @@
+.description {
+   font-family: $font-text;
+   font-weight: 700;
+   text-align: center;
+
+   &.--main {
+      font-weight: 800;
+      font-size: 2.5rem;
+      margin-top: 15px;
+   }
+
+   &.--sub {
+      font-size: 2.3rem;
+      color: $color-grey;
+
+      @include respond(phone-vsmall) {
+         font-size: 2.6rem;
+      }
+   }
+
+   &.--extra {
+      font-size: 3.5rem;
+
+      @include respond(phone) {
+         font-size: 3.2rem;
+      }
+   }
+}

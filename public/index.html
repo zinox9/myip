@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+         name="description"
+         content="This app will give you information according to your IP address, about your location adn your country, using API calls."
+      />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Poiret+One&family=Ubuntu+Mono:wght@700&family=Ubuntu:wght@400;700&display=swap"
+         rel="stylesheet"
+      />
+      <link
+         rel="stylesheet"
+         href="https://unpkg.com/simplebar@latest/dist/simplebar.css"
+      />
+      <link rel="stylesheet" href="./css/style.css" />
+      <link rel="stylesheet" href="./css/vendors.css" />
+      <link rel="shortcut icon" href="./favicon.svg" />
+      <title>myIP</title>
+   </head>
+   <body>
+      <div class="background"></div>
+      <div class="navbar__container">
+         <nav class="navbar">
+            <p class="navbar__text">/> my.IP</p>
+         </nav>
+      </div>
+      <div class="container">
+         <div class="main-content">
+            <div class="main-content__ip-box">
+               <h1 class="main-content__ip" id="ip">Loading...</h1>
+               <p class="description --main" id="ipText"></p>
+            </div>
+            <div class="main-content__location-box" id="location">
+               <!-- <p class="description --sub">your ISP Location is</p>
+               <h2 class="main-content__location">Kanpur</h2>
+               <span class="main-content__break"></span>
+               <h2 class="main-content__location">Uttar Pradesh</h2>
+               <span class="main-content__break"></span>
+               <h2 class="main-content__location">India</h2> -->
+            </div>
+            <div class="main-content__provider-box">
+               <p class="description --sub" id="providerText"></p>
+               <h2 class="main-content__provider" id="provider"></h2>
+            </div>
+         </div>
+         <div class="extra-content">
+            <p class="description --extra">More About Your Country</p>
+            <div class="extra-content__country-box" id="country">
+               <!-- <img
+                  class="extra-content__image"
+                  src="./images/64.png"
+                  alt="India Flag"
+               />
+               <h2>India</h2> -->
+            </div>
+            <div class="extra-content__info-box" id="info" data-simplebar>
+               <!-- <div class="extra-content__info">
+                  <i class="fas fa-angle-right"></i>
+                  <h2>Calling Codes :</h2>
+                  <p>91 , 9</p>
+               </div> -->
+            </div>
+         </div>
+      </div>
+      <footer class="footer">
+         <p class="footer__text">
+            Made with
+            <i class="fas fa-heart animated pulse infinite"></i> by Arjun
+         </p>
+      </footer>
+      <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+      <script src="./js/script.js"></script>
+   </body>
+</html>
