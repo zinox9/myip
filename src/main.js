@@ -36,6 +36,7 @@ getData("https://ipapi.co/json/")
       updateUI();
    })
    .catch((err) => {
+      console.log(err);
       ipEl.textContent = "Unable To Fetch";
       providerText.textContent = "Try Refreshing the website";
    });
@@ -62,7 +63,15 @@ const addElement = (parentAt, children) => {
 
 const updateUI = () => {
    //Change IP Address
-   ipEl.textContent = data.ipData.ip;
+
+   let ipAdd = data.ipData.ip;
+
+   if (ipAdd.includes("::")) {
+      const location = ipAdd.indexOf("::");
+      ipAdd = ipAdd.substring(0, location);
+   }
+
+   ipEl.textContent = ipAdd;
    ipTextEl.textContent = "is Your IP address";
 
    //Change Location
@@ -203,7 +212,7 @@ const getFinalData = (dataName, renderData) => {
 
 const renderFinalData = (finalData) => {
    for (let i = 0; i < finalData.length; i++) {
-      addElement(".simplebar-content", [
+      addElement("#info .simplebar-content", [
          [
             "div",
             "",

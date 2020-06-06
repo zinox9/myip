@@ -20,31 +20,11 @@ var data = {
 }; //DATA REQUEST
 
 var getData = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(url) {
-    var recievedData, data;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return fetch(url);
-
-          case 2:
-            recievedData = _context.sent;
-            _context.next = 5;
-            return recievedData.json();
-
-          case 5:
-            data = _context.sent;
-            return _context.abrupt("return", data);
-
-          case 7:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
+  var _ref = _asyncToGenerator(function* (url) {
+    var recievedData = yield fetch(url);
+    var data = yield recievedData.json();
+    return data;
+  });
 
   return function getData(_x) {
     return _ref.apply(this, arguments);
@@ -58,7 +38,8 @@ getData("https://ipapi.co/json/").then(function (ipData) {
 }).then(function (countryData) {
   data.countryData = countryData;
   updateUI();
-})["catch"](function (err) {
+}).catch(function (err) {
+  console.log(err);
   ipEl.textContent = "Unable To Fetch";
   providerText.textContent = "Try Refreshing the website";
 }); // UPDATING HTML
@@ -82,28 +63,35 @@ var addElement = function addElement(parentAt, children) {
 
 var updateUI = function updateUI() {
   //Change IP Address
-  ipEl.textContent = data.ipData.ip;
+  var ipAdd = data.ipData.ip;
+
+  if (ipAdd.includes("::")) {
+    var location = ipAdd.indexOf("::");
+    ipAdd = ipAdd.substring(0, location);
+  }
+
+  ipEl.textContent = ipAdd;
   ipTextEl.textContent = "is Your IP address"; //Change Location
 
   addElement("#location", [["p", "your ISP location is", {
-    "class": "description --sub"
+    class: "description --sub"
   }], ["h2", data.ipData.city, {
-    "class": "main-content__location"
+    class: "main-content__location"
   }], ["span", "", {
-    "class": "main-content__break"
+    class: "main-content__break"
   }], ["h2", data.ipData.region, {
-    "class": "main-content__location"
+    class: "main-content__location"
   }], ["span", "", {
-    "class": "main-content__break"
+    class: "main-content__break"
   }], ["h2", data.ipData.country_name, {
-    "class": "main-content__location"
+    class: "main-content__location"
   }]]); //Update Provider
 
   providerTextEl.textContent = "and Your Provider is";
   providerEl.textContent = data.ipData.org; //Change Flag & Country
 
   addElement("#country", [["img", "", {
-    "class": "extra-content__image",
+    class: "extra-content__image",
     src: "https://www.countryflags.io/".concat(data.countryData.alpha2Code, "/flat/64.png"),
     alt: "Flag"
   }], ["h2", data.countryData.name, {}]]); //Store Data
@@ -148,12 +136,12 @@ var getFinalData = function getFinalData(dataName, renderData) {
 
 var renderFinalData = function renderFinalData(finalData) {
   for (var i = 0; i < finalData.length; i++) {
-    addElement(".simplebar-content", [["div", "", {
-      "class": "extra-content__info",
+    addElement("#info .simplebar-content", [["div", "", {
+      class: "extra-content__info",
       id: "infoEl-" + i
     }]]);
     addElement("#infoEl-" + i, [["i", "", {
-      "class": "fas fa-angle-right"
+      class: "fas fa-angle-right"
     }], ["h2", finalData[i][0], {}], ["p", finalData[i][1], {}]]);
   }
 };
