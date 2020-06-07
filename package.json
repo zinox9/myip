@@ -1,7 +1,7 @@
 {
    "name": "myIP",
    "version": "1.0.0",
-   "description": "This app will give you information based on your IP address, about your ISP location and your country, using API calls",
+   "description": "Get information based on your IP address, about your location and your country, using API calls.",
    "main": "index.js",
    "browserslist": [
       "last 10 versions",
